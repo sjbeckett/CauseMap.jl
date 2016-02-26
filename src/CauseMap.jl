@@ -166,7 +166,7 @@ function getpredvals_boot(source_manifold::Array{Float64,2}, source_dists::Array
             inds_touse = calcdistslice!(source_dists, dist_top, slice_inds, topred, nn)   
             min_distances[pp, xx] = getdist!(dist_top, inds_touse, num_neighbors)
             weights = weightfunc(dist_top)
-            predvals[pp, xx] = dot(weights, target_series[inds_touse + tau_p]) 
+            predvals[pp, xx] = Base.dot(weights, target_series[inds_touse + tau_p]) 
         end   
     end
 
@@ -203,7 +203,7 @@ function getpredvals_sw(source_manifold::Array{Float64,2}, source_dists::Array{F
             min_distances[pred_count, start_count] = getdist!(dist_top, inds_touse, num_neighbors)
             
             weights = weightfunc(dist_top)
-            predvals[pred_count, start_count] = dot(weights, target_series[inds_touse+tau_p])
+            predvals[pred_count, start_count] = Base.dot(weights, target_series[inds_touse+tau_p])
             targvals[pred_count] = target_series[topred]
             
             pred_count += 1
