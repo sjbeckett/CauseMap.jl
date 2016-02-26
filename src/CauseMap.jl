@@ -104,7 +104,7 @@ end
 
 
 ### this function accounts for ~70% of algorithm run time
-function calcdistslice!(source_dists::Array{Float64, 2}, dist_top::Vector{Float64}, slice_inds::AbstractVector{Int}, topred::Int, nn::Range1{Int})    
+function calcdistslice!(source_dists::Array{Float64, 2}, dist_top::Vector{Float64}, slice_inds::AbstractVector{Int}, topred::Int, nn::UnitRange{Int})    
     if in(topred, slice_inds)
         slice_inds = convert(Vector{Int}, slice_inds)
         splice!(slice_inds, findfirst([yy == topred for yy in slice_inds])) # remove topred, but don't move any of the preceding elements in the array
